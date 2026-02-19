@@ -644,107 +644,95 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 		const grid = document.getElementById('github-repos-grid');
 		if (!grid) return;
 
+		// 1. TUS PÁGINAS WEB EN PRODUCCIÓN (Siempre visibles y fijas)
+		const premiumProjects = [
+			{
+				name: "NexSecure", subtitle: "ネクセキュア", badge: "企業 : CORPORATE",
+				description: "Agencia de desarrollo web y auditorías de seguridad.",
+				homepage: "https://desarrolloweb.nexsecure.cl/", isWeb: true
+			},
+			{
+				name: "Japimax", subtitle: "ジャピマックス", badge: "エンターテインメント : ENTERTAINMENT",
+				description: "Centro de Bowling y Entretenimiento Familiar en Santiago, Barrio Universitario. 13 pistas de bowling Brunswick.",
+				homepage: "https://japimax.com/", isWeb: true
+			},
+			{
+				name: "StrikeBowler", subtitle: "ストライクボウラー", badge: "サービス : SERVICE",
+				description: "Servicios técnicos profesionales para negocios de bowling. Más de 24 años de experiencia en instalación, reparación y ca...",
+				homepage: "https://strikebowler.cl/", isWeb: true
+			},
+			{
+				name: "VENT", subtitle: "ベント", badge: "Eコマース : E-COMMERCE",
+				description: "Plataforma de e-commerce con tienda, galería y archivo. Sistema de gestión de pedidos y catálogo digital.",
+				homepage: "https://web-vent.vercel.app/", isWeb: true
+			}
+		];
+
 		const username = "Poison-CL";
-		fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=9`)
+
+		// 2. OBTENER REPOSITORIOS EXTRA DE GITHUB
+		fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=15`)
 			.then(response => {
 				if (!response.ok) throw new Error('Error en la API');
 				return response.json();
 			})
 			.then(repos => {
-				const myProjects = repos.filter(repo => !repo.fork);
+				// Filtramos forks y evitamos que los repos de código de las webs premium se dupliquen
+				const githubProjects = repos
+					.filter(repo => !repo.fork)
+					.filter(repo => !['StrikeBowler', 'Ecommerce-Vent', 'NexSecure'].includes(repo.name))
+					.map(repo => ({
+						name: repo.name, subtitle: "リポジトリ", badge: "コード : CODE",
+						description: repo.description || 'Sin descripción disponible.',
+						html_url: repo.html_url, homepage: repo.homepage,
+						isWeb: !!repo.homepage
+					}));
 
-				grid.innerHTML = myProjects.map(repo => {
-					const isWeb = repo.homepage && repo.homepage !== "";
-					const labelType = isWeb ? "WEB" : "REPO";
-					const linkUrl = isWeb ? repo.homepage : repo.html_url;
-					const linkText = isWeb ? "VISITAR (訪問)" : "GITHUB (ソース)";
-					const buttonClass = isWeb 
-						? "bg-white text-black hover:bg-neutral-100 shadow-[4px_4px_0px_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all" 
-						: "bg-black text-white hover:bg-neutral-800 shadow-[4px_4px_0px_rgba(0,0,0,0.5)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all";
-					const statusHtml = isWeb 
-						? `<span class="text-xs font-bold text-green-600 flex items-center gap-1 font-mono">
-							<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> EN LÍNEA [ 稼働中 ]
-						</span>`
-						: `<span class="text-xs font-bold text-neutral-500 flex items-center gap-1 font-mono">
-							<span class="w-2 h-2 rounded-full bg-neutral-500"></span> CÓDIGO [ ソース ]
-						</span>`;
-					
-					return `
-						<article class="bg-white border-2 border-black shadow-[4px_4px_0px_#000] flex flex-col h-full">
-							<div class="p-4 border-b-2 border-black flex justify-between items-start bg-neutral-50/50">
-								<div>
-									<h3 class="font-bold text-lg text-black font-mono">${repo.name}</h3>
-									<span class="text-xs text-neutral-500 font-mono">/ ソース</span>
-								</div>
-								<div class="flex flex-col items-end gap-2">
-									${statusHtml}
-									<span class="text-[10px] border border-black px-1 font-mono">[ ${labelType} ]</span>
-								</div>
-							</div>
-							<div class="p-4 flex-grow flex flex-col justify-between">
-								<div class="mb-4">
-									<p class="text-sm text-neutral-700 font-mono">${repo.description || 'Sin descripción disponible.'}</p>
-								</div>
-								<a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="block text-center border-2 border-black py-2 px-4 font-bold font-mono ${buttonClass}">
-									${linkText}
-								</a>
-							</div>
-						</article>
-					`;
-				}).join('');
+				// 3. COMBINAR Y RENDERIZAR
+				renderProjects([...premiumProjects, ...githubProjects]);
 			})
 			.catch(error => {
-				console.warn("Error API GitHub (Rate Limit). Cargando caché de emergencia:", error);
-				// Fallback estático de emergencia para que el portafolio nunca se vea vacío
-				const fallbackProjects = [
-					{
-						name: "NexSecure",
-						description: "Agencia de desarrollo web y auditorías de seguridad.",
-						html_url: "https://github.com/Poison-CL",
-						homepage: "https://desarrolloweb.nexsecure.cl/",
-						isWeb: true
-					},
-					{
-						name: "Operación Omnicrom",
-						description: "Simulación de auditoría Blue Team con Kali Linux y Metasploit.",
-						html_url: "https://github.com/Poison-CL",
-						homepage: "",
-						isWeb: false
-					}
-				];
-				grid.innerHTML = fallbackProjects.map(repo => {
-					const labelType = repo.isWeb ? "WEB" : "REPO";
-					const linkUrl = repo.isWeb ? repo.homepage : repo.html_url;
-					const linkText = repo.isWeb ? "VISITAR (訪問)" : "GITHUB (ソース)";
-					const buttonClass = repo.isWeb 
-						? "bg-white text-black hover:bg-neutral-100 shadow-[4px_4px_0px_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all" 
-						: "bg-black text-white hover:bg-neutral-800 shadow-[4px_4px_0px_rgba(0,0,0,0.5)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all";
-					return `
-						<article class="bg-white border-2 border-black shadow-[4px_4px_0px_#000] flex flex-col h-full opacity-80 border-dashed relative">
-							<div class="absolute -top-3 left-2 bg-yellow-400 text-black text-[10px] font-bold px-2 py-0.5 border-2 border-black font-mono">MODO OFFLINE</div>
-							<div class="p-4 border-b-2 border-black flex justify-between items-start bg-neutral-50/50">
-								<div>
-									<h3 class="font-bold text-lg text-black font-mono">${repo.name}</h3>
-									<span class="text-xs text-neutral-500 font-mono">/ ソース</span>
-								</div>
-								<div class="flex flex-col items-end gap-2">
-									<span class="text-xs font-bold text-yellow-600 flex items-center gap-1 font-mono">
-										<span class="w-2 h-2 rounded-full bg-yellow-500"></span> CACHÉ [ キャッシュ ]
-									</span>
-									<span class="text-[10px] border border-black px-1 font-mono">[ ${labelType} ]</span>
-								</div>
-							</div>
-							<div class="p-4 flex-grow flex flex-col justify-between">
-								<div class="mb-4">
-									<p class="text-sm text-neutral-700 font-mono">${repo.description}</p>
-								</div>
-								<a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="block text-center border-2 border-black py-2 px-4 font-bold font-mono ${buttonClass}">
-									${linkText}
-								</a>
-							</div>
-						</article>
-					`;
-				}).join('');
+				console.warn("API Error (GitHub). Cargando solo páginas web premium.");
+				// Fallback: Si GitHub falla, tus proyectos más importantes siguen ahí
+				renderProjects(premiumProjects);
 			});
+
+		// FUNCIÓN DE RENDERIZADO (Estética Japan Core)
+		function renderProjects(projects) {
+			grid.innerHTML = projects.map(repo => {
+				const labelType = repo.isWeb ? "WEB" : "REPO";
+				const linkUrl = repo.isWeb && repo.homepage ? repo.homepage : (repo.html_url || "#");
+				const linkText = repo.isWeb ? "VISITAR (訪問)" : "GITHUB (ソース)";
+				const buttonClass = repo.isWeb 
+					? "bg-white text-black hover:bg-neutral-100 shadow-[4px_4px_0px_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all" 
+					: "bg-black text-white hover:bg-neutral-800 shadow-[4px_4px_0px_rgba(0,0,0,0.5)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all";
+				return `
+					<article class="bg-white border-2 border-black shadow-[4px_4px_0px_#000] flex flex-col h-full relative">
+						<div class="p-4 border-b-2 border-black flex justify-between items-start bg-neutral-50/50">
+							<div>
+								<h3 class="font-bold text-lg text-black font-mono">${repo.name} <span class="text-xs text-neutral-500 font-normal hidden md:inline-block">/ ${repo.subtitle}</span></h3>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-xs font-bold text-green-600 flex items-center gap-1 font-mono">
+									<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> EN LÍNEA [ 稼働中 ]
+								</span>
+								<span class="text-[10px] border border-black px-1 font-mono">[ ${labelType} ]</span>
+							</div>
+						</div>
+						<div class="p-4 flex-grow flex flex-col justify-between">
+							<div class="mb-4">
+								<div class="inline-block border border-neutral-300 text-neutral-500 text-[10px] px-2 py-1 mb-3 font-mono">
+									[ ${repo.badge} ]
+								</div>
+								<p class="text-sm text-neutral-700 font-mono">${repo.description}</p>
+							</div>
+							<a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="block text-center border-2 border-black py-2 px-4 font-bold font-mono ${buttonClass}">
+								${linkText}
+							</a>
+						</div>
+					</article>
+				`;
+			}).join('');
+		}
 	});
 </script>
