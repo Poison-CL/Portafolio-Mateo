@@ -1,0 +1,65 @@
+---
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = 'POISON-CL - Blue Team Specialist & Web Developer. Defensa Cibernética & Código Creativo.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content="https://mateogijon.dev" />
+		<meta property="og:site_name" content="Mateo Gijon - Desarrollo Web" />
+		
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+	</head>
+	<body class="bg-paper text-ink font-sans antialiased min-h-screen">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
+	html {
+		font-family: 'Space Grotesk', sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		scroll-behavior: smooth;
+		cursor: url('data:image/svg+xml;utf8,<svg height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1v22M1 12h22" stroke="white" stroke-width="3" fill="none"/><path d="M12 1v22M1 12h22" stroke="black" stroke-width="1" fill="none"/></svg>') 12 12, crosshair;
+	}
+
+	body {
+		cursor: url('data:image/svg+xml;utf8,<svg height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1v22M1 12h22" stroke="white" stroke-width="3" fill="none"/><path d="M12 1v22M1 12h22" stroke="black" stroke-width="1" fill="none"/></svg>') 12 12, crosshair;
+	}
+
+	a, button, input, textarea, select, [role="button"] {
+		cursor: url('data:image/svg+xml;utf8,<svg height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 1v22M1 12h22" stroke="white" stroke-width="3" fill="none"/><path d="M12 1v22M1 12h22" stroke="black" stroke-width="1" fill="none"/><circle cx="12" cy="12" r="1.5" fill="black"/></svg>') 12 12, pointer !important;
+	}
+</style>

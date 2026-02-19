@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Transmisión Completada - Mateo Gijon">
+	<main class="min-h-screen bg-neutral-950 text-green-400 font-mono flex items-center justify-center p-4">
+		<div class="max-w-2xl w-full border-2 border-neutral-800 bg-neutral-900 shadow-[4px_4px_0px_#ccc] p-6 md:p-8">
+			<!-- Cabecera de la Terminal -->
+			<div class="flex items-center justify-between mb-6 pb-4 border-b border-neutral-800">
+				<div class="flex items-center gap-2">
+					<div class="w-3 h-3 rounded-full bg-red-600"></div>
+					<div class="w-3 h-3 rounded-full bg-yellow-600"></div>
+					<div class="w-3 h-3 rounded-full bg-green-600"></div>
+				</div>
+				<span class="text-xs text-neutral-500">root@nexsecure:~ / 通信確認</span>
+			</div>
+
+			<!-- Contenido de Confirmación -->
+			<div class="space-y-4">
+				<h1 class="text-xl md:text-2xl mb-6 text-green-400 inline-block">
+					&gt; [ TRANSMISIÓN COMPLETADA ]_
+				</h1>
+				
+				<div class="space-y-2 text-sm md:text-base">
+					<p class="text-green-600/80">
+						&gt; PAQUETE DE DATOS ENCRIPTADO Y ENVIADO AL SERVIDOR NEXSECURE.
+					</p>
+					<p class="text-green-600/80 mb-8">
+						&gt; EL OPERADOR MATEO GIJON RESPONDERÁ A LA BREVEDAD.
+					</p>
+					
+					<div class="mt-6 pt-4 border-t border-neutral-800 space-y-2">
+						<p class="text-neutral-400 text-xs">
+							&gt; Estado del sistema: <span class="text-green-500">OPERATIVO</span>
+						</p>
+						<p class="text-neutral-400 text-xs">
+							&gt; Protocolo: <span class="text-green-500">HTTPS</span> | Puerto: <span class="text-green-500">443</span>
+						</p>
+						<p class="text-neutral-400 text-xs">
+							&gt; Timestamp: <span class="text-green-500" id="timestamp"></span>
+						</p>
+					</div>
+				</div>
+
+				<!-- Botón de regreso -->
+				<div class="mt-8 pt-6 border-t border-neutral-800">
+					<a 
+						href="/"
+						class="inline-block border-2 border-green-600 bg-transparent text-green-400 px-6 py-3 font-mono text-sm shadow-[4px_4px_0px_#22c55e] transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none hover:bg-green-600 hover:text-neutral-950"
+					>
+						[ VOLVER AL INICIO ]
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script>
+		// Mostrar timestamp actual
+		document.addEventListener('DOMContentLoaded', () => {
+			const timestampEl = document.getElementById('timestamp');
+			if (timestampEl) {
+				const now = new Date();
+				const formatted = now.toLocaleString('es-CL', {
+					year: 'numeric',
+					month: '2-digit',
+					day: '2-digit',
+					hour: '2-digit',
+					minute: '2-digit',
+					second: '2-digit'
+				});
+				timestampEl.textContent = formatted;
+			}
+		});
+	</script>
+
+	<style>
+		/* Efecto de cursor parpadeante para el título */
+		@keyframes blink {
+			0%, 50% { opacity: 1; }
+			51%, 100% { opacity: 0; }
+		}
+		
+		h1::after {
+			content: '█';
+			animation: blink 1s infinite;
+			margin-left: 2px;
+		}
+	</style>
+</Layout>
