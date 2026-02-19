@@ -54,9 +54,9 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 
 <Layout title="Mateo Gijon - Desarrollo Web" description="Portafolio de Mateo Gijon. Desarrollador Web Freelance, creador de NexSecure.">
 	<!-- PRELOADER -->
-	<div id="japan-preloader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white pointer-events-none">
+	<div id="japan-preloader" class="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-neutral-950 pointer-events-none">
 		<div class="overflow-hidden whitespace-nowrap">
-			<h2 id="preloader-text" class="font-mono text-2xl md:text-4xl font-bold text-black">
+			<h2 id="preloader-text" class="font-mono text-2xl md:text-4xl font-bold text-black dark:text-white">
 				[ ロード中... ]
 			</h2>
 		</div>
@@ -66,85 +66,99 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 	</noscript>
 
 	<!-- HEADER -->
-	<header class="border-b border-neutral-900 bg-paper sticky top-0 z-50">
+	<header class="border-b border-neutral-900 dark:border-neutral-700 bg-paper dark:bg-neutral-900 sticky top-0 z-50">
 		<nav class="container mx-auto px-4 py-3 md:py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
 			<div class="flex items-center gap-2">
 				<div class="flex flex-col">
-					<span class="text-lg md:text-xl font-bold font-mono">POISON-CL</span>
-					<span class="text-xs font-mono text-neutral-500">ポイズン・シーエル</span>
+					<span class="text-lg md:text-xl font-bold font-mono dark:text-white">POISON-CL</span>
+					<span class="text-xs font-mono text-neutral-500 dark:text-neutral-400">ポイズン・シーエル</span>
 				</div>
-				<span class="text-lg md:text-xl">(▀̿Ĺ̯▀̿ ̿)</span>
+				<span class="text-lg md:text-xl dark:text-white">(▀̿Ĺ̯▀̿ ̿)</span>
 			</div>
-			<div class="flex flex-wrap gap-4 md:gap-6">
-				<a href="#proyectos" class="text-ink hover:underline transition-all duration-200 ease-out flex flex-col items-start">
-					<span class="text-xs font-mono text-neutral-500 leading-tight">案件</span>
+			<div class="flex flex-wrap gap-1.5 sm:gap-4 md:gap-6 items-center">
+				<a href="#proyectos" class="text-ink dark:text-white hover:underline transition-all duration-200 ease-out flex flex-col items-start">
+					<span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 leading-tight">案件</span>
 					<span class="leading-tight text-sm md:text-base">Proyectos</span>
 				</a>
-				<a href="#stack" class="text-ink hover:underline transition-all duration-200 ease-out flex flex-col items-start">
-					<span class="text-xs font-mono text-neutral-500 leading-tight">スキル</span>
+				<a href="#stack" class="text-ink dark:text-white hover:underline transition-all duration-200 ease-out flex flex-col items-start">
+					<span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 leading-tight">スキル</span>
 					<span class="leading-tight text-sm md:text-base">Stack</span>
 				</a>
-				<a href="#contacto" class="text-ink hover:underline transition-all duration-200 ease-out flex flex-col items-start">
-					<span class="text-xs font-mono text-neutral-500 leading-tight">お問い合わせ</span>
+				<a href="#contacto" class="text-ink dark:text-white hover:underline transition-all duration-200 ease-out flex flex-col items-start">
+					<span class="text-xs font-mono text-neutral-500 dark:text-neutral-400 leading-tight">お問い合わせ</span>
 					<span class="leading-tight text-sm md:text-base">Contacto</span>
 				</a>
+				<button id="theme-toggle" type="button" class="border-2 border-black dark:border-white px-2 py-1 md:p-2 text-xs md:text-sm hover:-translate-y-1 hover:shadow-[2px_2px_0px_#000] dark:hover:shadow-[2px_2px_0px_#fff] transition-all bg-white dark:bg-black text-black dark:text-white font-mono flex items-center gap-1 md:gap-2 cursor-pointer">
+					<span id="theme-icon-light" class="hidden dark:block">☀ LUZ</span>
+					<span id="theme-icon-dark" class="block dark:hidden">☾ OSCURO</span>
+				</button>
 			</div>
 		</nav>
 	</header>
 
 	<!-- MAIN -->
-	<main class="overflow-x-hidden">
+	<main class="overflow-x-hidden w-full max-w-[100vw]">
 		<!-- HERO -->
-		<section class="container mx-auto px-4 min-h-[calc(100vh-80px)] relative flex flex-col justify-center">
-			<div class="absolute top-2 right-2 md:top-0 md:right-4 lg:right-8">
-				<span class="font-mono text-xs border border-neutral-900 bg-paper px-2 py-1 md:px-3 shadow-hard text-neutral-500">
+		<section class="container mx-auto px-4 min-h-[calc(100vh-80px)] relative flex flex-col justify-center overflow-hidden w-full">
+			<div class="absolute top-2 right-2 md:top-0 md:right-4 lg:right-8 max-w-[calc(100%-1rem)] overflow-hidden">
+				<span class="font-mono text-xs border border-neutral-900 dark:border-neutral-700 bg-paper dark:bg-neutral-900 px-2 py-1 md:px-3 shadow-hard dark:shadow-[4px_4px_0px_#fff] text-neutral-500 dark:text-neutral-300 whitespace-nowrap text-ellipsis block">
 					[ システム正常 : ONLINE ]
 				</span>
 			</div>
 			
 			<div class="max-w-prose text-left">
-				<h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-3 text-left font-sans break-words">
+				<h1 class="text-3xl md:text-6xl lg:text-8xl font-bold mb-3 text-left font-sans break-words">
 					SOY 
 				</h1>
-				<h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mb-3 text-left font-sans break-words">
+				<h1 class="text-3xl md:text-6xl lg:text-8xl font-bold mb-3 text-left font-sans break-words">
 					MATEO GIJON
 				</h1>
-				<p class="font-mono text-xs md:text-sm text-neutral-500 mb-4 md:mb-6 text-left break-words">
+				<p class="font-mono text-xs md:text-sm text-neutral-500 dark:text-neutral-400 mb-4 md:mb-6 text-left break-words">
 					サイバーセキュリティ // ウェブ開発
 				</p>
-				<p class="text-base md:text-lg lg:text-xl text-left max-w-prose mb-6 md:mb-8 break-words">
+				<p class="text-base md:text-lg lg:text-xl text-left max-w-prose mb-4 md:mb-6 break-words dark:text-white">
 					Web Developer. Construyendo Webs & Software desde los 17 años.
 				</p>
+				<div class="mb-4 md:mb-6">
+					<a 
+						href="mailto:mateomartinezsem@gmail.com" 
+						class="inline-flex items-center gap-2 font-mono text-sm md:text-base text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:underline transition-all break-words"
+					>
+						<svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+						</svg>
+						<span class="break-all">mateomartinezsem@gmail.com</span>
+					</a>
+				</div>
 				<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
 					<a 
 						href="https://github.com/Poison-CL" 
 						target="_blank" 
 						rel="noopener noreferrer"
-						class="w-full sm:w-auto text-center border border-neutral-900 bg-ink text-paper px-6 py-3 font-mono shadow-hard transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
+						class="w-[calc(100%-8px)] sm:w-auto text-center border border-neutral-900 dark:border-neutral-700 bg-ink dark:bg-white text-paper dark:text-black px-6 py-3 font-mono shadow-hard dark:shadow-[4px_4px_0px_#fff] transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none"
 					>
 						Ver GitHub
 					</a>
 					<a 
 						href="#perfil"
-						class="w-full sm:w-auto text-center border-2 border-neutral-900 bg-transparent text-ink px-6 py-3 font-mono shadow-hard transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none hover:bg-neutral-900 hover:text-paper"
+						class="w-[calc(100%-8px)] sm:w-auto text-center border-2 border-neutral-900 dark:border-neutral-700 bg-transparent text-ink dark:text-white px-6 py-3 font-mono shadow-hard dark:shadow-[4px_4px_0px_#fff] transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none hover:bg-neutral-900 dark:hover:bg-neutral-100 hover:text-paper dark:hover:text-black"
 					>
 						Sobre mí <span class="text-xs">[ 私について ]</span>
 					</a>
-					<span class="font-mono text-xs text-neutral-500">アクセス</span>
 				</div>
 			</div>
 		</section>
 
 		<!-- TECH_STACK -->
-		<section id="stack" class="border-y border-neutral-900 bg-paper py-8 overflow-hidden">
+		<section id="stack" class="border-y border-neutral-900 dark:border-neutral-700 bg-paper dark:bg-neutral-900 py-8 overflow-hidden w-full">
 			<div class="flex gap-8 animate-marquee whitespace-nowrap">
 				{techStack.map((tech) => (
-					<span key={tech} class="font-mono text-sm border border-neutral-900 px-4 py-2 bg-paper shadow-hard inline-block flex-shrink-0">
+					<span key={tech} class="font-mono text-sm border border-neutral-900 dark:border-neutral-700 px-4 py-2 bg-paper dark:bg-neutral-800 shadow-hard dark:shadow-[4px_4px_0px_#fff] text-black dark:text-white inline-block flex-shrink-0">
 						{tech}
 					</span>
 				))}
 				{techStack.map((tech) => (
-					<span key={`${tech}-dup`} class="font-mono text-sm border border-neutral-900 px-4 py-2 bg-paper shadow-hard inline-block flex-shrink-0">
+					<span key={`${tech}-dup`} class="font-mono text-sm border border-neutral-900 dark:border-neutral-700 px-4 py-2 bg-paper dark:bg-neutral-800 shadow-hard dark:shadow-[4px_4px_0px_#fff] text-black dark:text-white inline-block flex-shrink-0">
 						{tech}
 					</span>
 				))}
@@ -165,74 +179,90 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 relative z-10">
 				<div class="md:col-span-1 order-1 md:order-1">
-					<div class="relative w-full aspect-square border-2 border-black shadow-[4px_4px_0px_#000] overflow-hidden bg-neutral-200">
+					<div class="relative w-full aspect-square border-2 border-black dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] overflow-hidden bg-neutral-200 dark:bg-neutral-800">
 						<img src="https://media.discordapp.net/attachments/1297263543053451274/1474116452205330564/624725424_18141028618468225_6224834856789371662_n.webp?ex=6998ad6d&is=69975bed&hm=d69839cfcf2c4f64f1ad881b46bd93025d4f5174b778ad7ec110aa7ff5dfad0c&=&format=webp&width=968&height=968" alt="Mateo Gijon - Operador 1" class="profile-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 z-10 filter grayscale hover:grayscale-0" />
 						
 						<img src="https://media.discordapp.net/attachments/1297263543053451274/1474114727864045701/IMG_8346.jpg?ex=6998abd2&is=69975a52&hm=35f0d579d6d88bf0c85038049bd647ea8abd2dc5470c03a0d5ec191025266ff9&=&format=webp&width=544&height=968" alt="Mateo Gijon - Operador 2" class="profile-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0 filter grayscale hover:grayscale-0" />
 						
 						<img src="https://media.discordapp.net/attachments/1297263543053451274/1474114263625764925/EA7006E8-AEE4-46B2-9F1F-7C973C38BB46.jpg?ex=6998ab64&is=699759e4&hm=5f53aa95bb2cbc1210b38028858d8361b195d8fd2cc98d4fdcbdf738b9adf36c&=&format=webp&width=542&height=967" alt="Mateo Gijon - Operador 3" class="profile-slide absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 z-0 filter grayscale hover:grayscale-0" />
 						
-						<div class="absolute bottom-2 right-2 z-20 bg-white border border-black px-1 text-[10px] font-mono font-bold">
+						<div class="absolute bottom-2 right-2 z-20 bg-white dark:bg-black border border-black dark:border-white px-1 text-[10px] font-mono font-bold text-black dark:text-white">
 							REC <span class="animate-pulse text-red-500">●</span>
 						</div>
 					</div>
 				</div>
 
 				<div class="md:col-span-2 order-2 md:order-2">
-					<div class="border-2 border-neutral-900 bg-paper shadow-[4px_4px_0px_#000] p-4 md:p-6">
+					<div class="border-2 border-neutral-900 dark:border-neutral-700 bg-paper dark:bg-neutral-900 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] p-4 md:p-6">
 						<div class="space-y-4 text-left">
 							<div>
-								<p class="font-mono text-xs text-neutral-500 mb-1">名前</p>
-								<p class="font-mono text-sm font-bold mb-1">Nombre [ 名前 ]:</p>
-								<p class="font-sans text-base">Mateo Gijon</p>
+								<p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-1">名前</p>
+								<p class="font-mono text-sm font-bold mb-1 dark:text-white">Nombre [ 名前 ]:</p>
+								<p class="font-sans text-base dark:text-white">Mateo Gijon</p>
 							</div>
 
 							<div>
-								<p class="font-mono text-xs text-neutral-500 mb-1">拠点</p>
-								<p class="font-mono text-sm font-bold mb-1">Base [ 拠点 ]:</p>
-								<p class="font-sans text-base">Santiago, CL</p>
+								<p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-1">拠点</p>
+								<p class="font-mono text-sm font-bold mb-1 dark:text-white">Base [ 拠点 ]:</p>
+								<p class="font-sans text-base dark:text-white">Santiago, CL</p>
 							</div>
 
 							<div>
-								<p class="font-mono text-xs text-neutral-500 mb-1">状態</p>
-								<p class="font-mono text-sm font-bold mb-1">Status [ 状態 ]:</p>
-								<p class="font-sans text-base max-w-prose">Desarrollador Web Freelance en NexSecure. Especialista en creación de sitios desde cero & crear Software Personalizados.</p>
-							</div>
-
-							<div>
-								<p class="font-mono text-xs text-neutral-500 mb-1">ログ</p>
-								<p class="font-mono text-sm font-bold mb-1">Registro de Actividad [ ログ ]:</p>
-								<p class="font-sans text-base max-w-prose text-left">
-									Líder de la comunidad Alt F4, gestionando eventos universitarios y "tarreos". Instructor de talleres de videojuegos en el CITT, Creador de Bots de Automatización de sistemas para juegos.
+								<p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-1">状態</p>
+								<p class="font-mono text-sm font-bold mb-1 dark:text-white">Status [ 状態 ]:</p>
+								<p class="font-sans text-base max-w-prose text-left mb-2 dark:text-white">
+									Desarrollador Web Freelance en NexSecure. Especialista en <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">Desarrollo Web</span> y <span class="bg-green-50 dark:bg-green-900 text-green-800 dark:text-green-300 px-1 font-bold">Ciberseguridad</span>.
+								</p>
+								<p class="font-sans text-base max-w-prose text-left dark:text-white">
+									Creación de sitios desde cero y <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">Software Personalizados</span> con enfoque en seguridad y eficiencia.
 								</p>
 							</div>
 
 							<div>
-								<p class="font-mono text-xs text-neutral-500 mb-1">履歴</p>
-								<p class="font-mono text-sm font-bold mb-1">Experiencia Técnica [ 履歴 ]:</p>
-								<p class="font-sans text-base max-w-prose text-left">
-									Experiencia previa en el área de Informática de la Municipalidad de San Joaquín. Soporte y gestión tecnológica.
+								<p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-1">ログ</p>
+								<p class="font-mono text-sm font-bold mb-1 dark:text-white">Registro de Actividad [ ログ ]:</p>
+								<p class="font-sans text-base max-w-prose text-left mb-2 dark:text-white">
+									Líder de la comunidad Alt F4, gestionando eventos universitarios. Instructor de talleres de videojuegos en el CITT.
+								</p>
+								<p class="font-sans text-base max-w-prose text-left dark:text-white">
+									Creador de <span class="bg-green-50 dark:bg-green-900 text-green-800 dark:text-green-300 px-1 font-bold">Bots</span> y sistemas de <span class="bg-green-50 dark:bg-green-900 text-green-800 dark:text-green-300 px-1 font-bold">Automatización</span> para juegos, explorando los límites de la eficiencia.
+								</p>
+							</div>
+
+							<div>
+								<p class="font-mono text-xs text-neutral-500 dark:text-neutral-400 mb-1">履歴</p>
+								<p class="font-mono text-sm font-bold mb-1 dark:text-white">Experiencia Técnica [ 履歴 ]:</p>
+								<p class="font-sans text-base max-w-prose text-left dark:text-white">
+									Experiencia en el área de Informática de la Municipalidad de San Joaquín. <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">Soporte</span> y <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">gestión tecnológica</span>.
 								</p>
 							</div>
 
 							<div class="mb-6">
-								<p class="font-mono text-sm font-bold mb-2 inline-block border-b-2 border-black pr-4">
+								<p class="font-mono text-sm font-bold mb-2 inline-block border-b-2 border-black dark:border-white pr-4 dark:text-white">
 									INTERESES & LOGROS [ サブタスク ]:
 								</p>
 								
-								<p class="font-sans text-base max-w-prose text-left text-neutral-800 mb-4">
-									Me gusta mucho escuchar música & el gaming. Me gusta ser curioso de qué tan lejos puede llegar un bot en un juego para poder conseguir recursos automáticamente o diferentes cosas, y crear páginas web con diseños locos.
+								<p class="font-sans text-base max-w-prose text-left text-neutral-800 dark:text-neutral-200 mb-3">
+									Música y <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">gaming</span>. Me gusta explorar los límites de la <span class="bg-green-50 dark:bg-green-900 text-green-800 dark:text-green-300 px-1 font-bold">automatización</span> y entender cómo funcionan los <span class="bg-green-50 dark:bg-green-900 text-green-800 dark:text-green-300 px-1 font-bold">bots</span> en diferentes entornos.
 								</p>
 								
-								<div class="flex flex-wrap gap-4 mt-4">
-									<div class="inline-flex items-center gap-3 border-2 border-black bg-white px-3 py-2 shadow-[2px_2px_0px_#000] w-fit hover:-translate-y-1 hover:shadow-[4px_4px_0px_#000] transition-all cursor-default">
-										<span class="font-mono text-xs font-bold text-black">LEAGUE OF LEGENDS</span>
-										<span class="font-mono text-[10px] sm:text-xs font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 border border-amber-200">MASTER [ マスター ]</span>
+								<p class="font-sans text-base max-w-prose text-left text-neutral-800 dark:text-neutral-200 mb-3">
+									En <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">Desarrollo Web</span>, me especializo en crear interfaces con <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">diseños únicos</span> y propuestas visuales arriesgadas que destacan.
+								</p>
+								
+								<p class="font-sans text-base max-w-prose text-left text-neutral-800 dark:text-neutral-200 mb-4">
+									Esa misma curiosidad técnica la aplico en proyectos de <span class="bg-green-50 dark:bg-green-900 text-green-800 dark:text-green-300 px-1 font-bold">Ciberseguridad</span> y sistemas personalizados.
+								</p>
+								
+								<div class="flex flex-wrap gap-3 mt-4">
+									<div class="inline-flex items-center gap-3 border-2 border-black dark:border-white bg-white dark:bg-neutral-900 px-3 py-2 shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_#fff] w-fit hover:-translate-y-1 hover:shadow-[4px_4px_0px_#000] dark:hover:shadow-[4px_4px_0px_#fff] transition-all cursor-default">
+										<span class="font-mono text-xs font-bold text-black dark:text-white">LEAGUE OF LEGENDS</span>
+										<span class="font-mono text-[10px] sm:text-xs font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900 px-1.5 py-0.5 border border-amber-200 dark:border-amber-700">MASTER [ マスター ]</span>
 									</div>
 									
-									<div class="inline-flex items-center gap-3 border-2 border-black bg-white px-3 py-2 shadow-[2px_2px_0px_#000] w-fit hover:-translate-y-1 hover:shadow-[4px_4px_0px_#000] transition-all cursor-default">
-										<span class="font-mono text-xs font-bold text-black">APEX LEGENDS</span>
-										<span class="font-mono text-[10px] sm:text-xs font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 border border-amber-200">MASTER [ マスター ]</span>
+									<div class="inline-flex items-center gap-3 border-2 border-black dark:border-white bg-white dark:bg-neutral-900 px-3 py-2 shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_#fff] w-fit hover:-translate-y-1 hover:shadow-[4px_4px_0px_#000] dark:hover:shadow-[4px_4px_0px_#fff] transition-all cursor-default">
+										<span class="font-mono text-xs font-bold text-black dark:text-white">APEX LEGENDS</span>
+										<span class="font-mono text-[10px] sm:text-xs font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900 px-1.5 py-0.5 border border-amber-200 dark:border-amber-700">MASTER [ マスター ]</span>
 									</div>
 								</div>
 							</div>
@@ -252,7 +282,7 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 					<h2 class="text-3xl md:text-4xl font-bold text-left break-words">Proyectos</h2>
 				</div>
 			</div>
-			<div id="github-repos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 relative z-10">
+			<div id="github-repos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
 				<div class="col-span-full text-center py-10 font-mono text-neutral-500 animate-pulse">
 					[ CONECTANDO CON LOS SERVIDORES DE GITHUB... ]
 				</div>
@@ -294,36 +324,36 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 						<input type="hidden" name="subject" value="Nuevo contacto clasificado desde MATEO.DEV" />
 						<input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
 
-						<div class="flex items-center flex-wrap">
-							<span class="text-green-500 font-mono text-sm md:text-base">guest@user:~$</span>
+						<div class="flex items-center flex-wrap gap-2">
+							<span class="text-green-500 dark:text-green-400 font-mono text-sm md:text-base flex-shrink-0">guest@user:~$</span>
 							<input 
 								type="text" 
 								name="name"
 								placeholder="ingresa_tu_nombre" 
 								required
-								class="bg-transparent border-none outline-none focus:ring-0 text-green-400 font-mono text-sm md:text-base w-full md:w-auto flex-1 min-w-[200px] ml-2 placeholder-neutral-700"
+								class="bg-transparent dark:bg-neutral-900 border-none dark:border-white outline-none focus:ring-0 text-green-400 dark:text-green-300 font-mono text-sm md:text-base w-full flex-1 min-w-0 placeholder-neutral-700 dark:placeholder-neutral-500"
 							/>
 						</div>
 
-						<div class="flex items-center flex-wrap">
-							<span class="text-green-500 font-mono text-sm md:text-base">guest@user:~$</span>
+						<div class="flex items-center flex-wrap gap-2">
+							<span class="text-green-500 dark:text-green-400 font-mono text-sm md:text-base flex-shrink-0">guest@user:~$</span>
 							<input 
 								type="email" 
 								name="email"
 								placeholder="ingresa_tu_email_aqui" 
 								required
-								class="bg-transparent border-none outline-none focus:ring-0 text-green-400 font-mono text-sm md:text-base w-full md:w-auto flex-1 min-w-[200px] ml-2 placeholder-neutral-700"
+								class="bg-transparent dark:bg-neutral-900 border-none dark:border-white outline-none focus:ring-0 text-green-400 dark:text-green-300 font-mono text-sm md:text-base w-full flex-1 min-w-0 placeholder-neutral-700 dark:placeholder-neutral-500"
 							/>
 						</div>
 
-						<div class="flex items-start">
-							<span class="text-green-500 font-mono text-sm md:text-base mt-1">guest@user:~$</span>
+						<div class="flex items-start gap-2">
+							<span class="text-green-500 dark:text-green-400 font-mono text-sm md:text-base mt-1 flex-shrink-0">guest@user:~$</span>
 							<textarea 
 								name="message"
 								placeholder="escribe_tu_mensaje_aqui" 
 								required
 								rows="4"
-								class="bg-transparent border-none outline-none focus:ring-0 text-green-400 font-mono text-sm md:text-base w-full ml-2 placeholder-neutral-700 resize-none"
+								class="bg-transparent dark:bg-neutral-900 border-none dark:border-white outline-none focus:ring-0 text-green-400 dark:text-green-300 font-mono text-sm md:text-base w-full flex-1 min-w-0 placeholder-neutral-700 dark:placeholder-neutral-500 resize-none"
 							></textarea>
 						</div>
 
@@ -331,7 +361,7 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 							<button 
 								id="submit-btn"
 								type="submit"
-								class="text-green-500 font-mono text-sm md:text-base hover:bg-green-500 hover:text-neutral-950 hover:animate-pulse transition-all duration-200 ease-out cursor-pointer bg-transparent border-none outline-none px-4 py-2 rounded"
+								class="w-full text-green-500 dark:text-green-400 font-mono text-sm md:text-base hover:bg-green-500 hover:text-neutral-950 dark:hover:text-neutral-950 hover:animate-pulse transition-all duration-200 ease-out cursor-pointer bg-transparent border-none outline-none px-4 py-2 rounded text-left"
 							>
 								[ EJECUTAR TRANSMISIÓN ]
 							</button>
@@ -349,9 +379,9 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 	<!-- TEEMO -->
 	<div id="teemo-container" class="fixed bottom-4 right-4 z-50 select-none pointer-events-auto w-20 h-20 md:w-24 md:h-24">
 		<div id="teemo-tooltip" class="absolute bottom-full right-0 mb-4 opacity-0 invisible transition-all duration-300 ease-out transform translate-y-4 pointer-events-none">
-			<div class="bg-white border-2 border-neutral-900 shadow-[4px_4px_0px_#000] p-3 font-mono text-sm whitespace-nowrap relative">
-				<div class="absolute -bottom-2 right-8 w-4 h-4 bg-white border-b-2 border-r-2 border-neutral-900 transform rotate-45"></div>
-				<span class="text-green-600 font-bold animate-pulse">●</span> <span id="teemo-dialog" class="ml-1">[ 監視中 : TEEMO ]</span>
+			<div class="bg-white dark:bg-neutral-900 border-2 border-neutral-900 dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] p-3 font-mono text-sm whitespace-nowrap relative">
+				<div class="absolute -bottom-2 right-8 w-4 h-4 bg-white dark:bg-neutral-900 border-b-2 border-r-2 border-neutral-900 dark:border-white transform rotate-45"></div>
+				<span class="text-green-600 dark:text-green-400 font-bold animate-pulse">●</span> <span id="teemo-dialog" class="ml-1 dark:text-white">[ 監視中 : TEEMO ]</span>
 			</div>
 		</div>
 		<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-16 h-4 bg-black/20 blur-sm rounded-full -z-10"></div>
@@ -363,93 +393,93 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 	</div>
 
 	<!-- FOOTER -->
-	<footer id="contacto" class="border-t border-neutral-900 bg-paper mt-20">
+	<footer id="contacto" class="border-t border-neutral-900 dark:border-neutral-700 bg-paper dark:bg-neutral-900 mt-20">
 		<div class="container mx-auto px-4 py-8">
 			<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-left">
 				<div class="flex-1">
-					<p class="mb-2 font-mono text-sm">お問い合わせ // CONTACTO</p>
+					<p class="mb-2 font-mono text-sm dark:text-white">お問い合わせ // CONTACTO</p>
 					
 					<div class="mb-4">
-						<div class="flex flex-wrap gap-4 items-center">
+						<div class="flex flex-wrap justify-center gap-4 items-center">
 							<a 
 								href="https://github.com/Poison-CL" 
 								target="_blank" 
 								rel="noopener noreferrer"
-								class="inline-flex items-center gap-2 bg-white border-2 border-neutral-900 shadow-[4px_4px_0px_#000] px-4 py-2 font-mono text-sm transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
+								class="inline-flex items-center gap-2 bg-white dark:bg-neutral-900 border-2 border-neutral-900 dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] px-4 py-2 font-mono text-sm text-black dark:text-white transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
 							>
 								<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
 									<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23 1.957-.544 4.049-.544 6.006 0 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
 								</svg>
-								<span>GITHUB <span class="text-xs text-neutral-500">[ ギットハブ ]</span></span>
+								<span>GITHUB <span class="text-xs text-neutral-500 dark:text-neutral-400">[ ギットハブ ]</span></span>
 							</a>
 							<a 
 								href="https://discord.com/users/peruanochitero" 
 								target="_blank" 
 								rel="noopener noreferrer"
-								class="inline-flex items-center gap-2 bg-white border-2 border-neutral-900 shadow-[4px_4px_0px_#000] px-4 py-2 font-mono text-sm transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
+								class="inline-flex items-center gap-2 bg-white dark:bg-neutral-900 border-2 border-neutral-900 dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] px-4 py-2 font-mono text-sm text-black dark:text-white transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
 							>
 								<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
 									<path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.295-.444.697-.608 1.112a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.111.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C2.4 6.45 1.896 8.51 1.756 10.544a.082.082 0 0 0 .031.058 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.007-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.058c-.2-2.13-.793-4.175-1.888-6.144a.05.05 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
 								</svg>
-								<span>DISCORD <span class="text-xs text-neutral-500">[ ディスコード ]</span></span>
+								<span>DISCORD <span class="text-xs text-neutral-500 dark:text-neutral-400">[ ディスコード ]</span></span>
 							</a>
 							<a 
 								href="https://www.instagram.com/prbleems/" 
 								target="_blank" 
 								rel="noopener noreferrer"
-								class="inline-flex items-center gap-2 bg-white border-2 border-neutral-900 shadow-[4px_4px_0px_#000] px-4 py-2 font-mono text-sm transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
+								class="inline-flex items-center gap-2 bg-white dark:bg-neutral-900 border-2 border-neutral-900 dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] px-4 py-2 font-mono text-sm text-black dark:text-white transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
 							>
 								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
 									<rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
 									<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
 									<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
 								</svg>
-								<span>INSTAGRAM <span class="text-xs text-neutral-500">[ インスタグラム ]</span></span>
+								<span>INSTAGRAM <span class="text-xs text-neutral-500 dark:text-neutral-400">[ インスタグラム ]</span></span>
 							</a>
 							<a 
 								href="https://cl.linkedin.com/in/mateomartinezgijon" 
 								target="_blank" 
 								rel="noopener noreferrer"
-								class="inline-flex items-center gap-2 bg-white border-2 border-neutral-900 shadow-[4px_4px_0px_#000] px-4 py-2 font-mono text-sm transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
+								class="inline-flex items-center gap-2 bg-white dark:bg-neutral-900 border-2 border-neutral-900 dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] px-4 py-2 font-mono text-sm text-black dark:text-white transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
 							>
 								<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
 									<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
 								</svg>
-								<span>LINKEDIN <span class="text-xs text-neutral-500">[ リンクトイン ]</span></span>
+								<span>LINKEDIN <span class="text-xs text-neutral-500 dark:text-neutral-400">[ リンクトイン ]</span></span>
 							</a>
 							<a 
 								href="https://pinterest.com/prbleems/" 
 								target="_blank" 
 								rel="noopener noreferrer"
-								class="inline-flex items-center gap-2 bg-white border-2 border-neutral-900 shadow-[4px_4px_0px_#000] px-4 py-2 font-mono text-sm transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
+								class="inline-flex items-center gap-2 bg-white dark:bg-neutral-900 border-2 border-neutral-900 dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] px-4 py-2 font-mono text-sm text-black dark:text-white transition-all duration-200 ease-out hover:translate-x-1 hover:translate-y-1 hover:shadow-none whitespace-nowrap"
 							>
 								<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0">
 									<path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.619 11.174-.105-.949-.2-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
 								</svg>
-								<span>PINTEREST <span class="text-xs text-neutral-500">[ ピンタレスト ]</span></span>
+								<span>PINTEREST <span class="text-xs text-neutral-500 dark:text-neutral-400">[ ピンタレスト ]</span></span>
 							</a>
 						</div>
 					</div>
 					
-					<p class="mt-4 font-mono text-xs text-neutral-500">
+					<p class="mt-4 font-mono text-xs text-neutral-500 dark:text-neutral-400">
 						© 2026 MATEO GIJON // DESARROLLO WEB. TODOS LOS DERECHOS RESERVADOS.
 					</p>
 				</div>
-				<div class="text-xl">
+				<div class="text-xl dark:text-white">
 					PROTEGIDO POR TEEMO. (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧
 				</div>
 			</div>
 			
 			<div class="w-full flex justify-center mt-12 mb-4">
 				<a href="https://astro.build" target="_blank" rel="noopener noreferrer" 
-					class="group flex items-center border-2 border-black bg-white shadow-[4px_4px_0px_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
+					class="group flex items-center border-2 border-black dark:border-white bg-white dark:bg-neutral-900 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all">
 					
-					<div class="px-4 py-2 font-mono text-sm font-bold text-black">
-						HECHO CON ASTRO <span class="text-neutral-400 font-normal ml-1">/ アストロ</span>
+					<div class="px-4 py-2 font-mono text-sm font-bold text-black dark:text-white">
+						HECHO CON ASTRO <span class="text-neutral-400 dark:text-neutral-500 font-normal ml-1">/ アストロ</span>
 					</div>
 					
-					<div class="border-l-2 border-black bg-black px-3 py-2 group-hover:bg-[#FF5D01] transition-colors duration-300">
-						<svg class="w-5 h-5 text-white" viewBox="0 0 256 366" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<div class="border-l-2 border-black dark:border-white bg-black dark:bg-white px-3 py-2 group-hover:bg-[#FF5D01] transition-colors duration-300">
+						<svg class="w-5 h-5 text-white dark:text-black" viewBox="0 0 256 366" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" clip-rule="evenodd" d="M128 0L242.067 52.8805V230.134L128 365.333L13.933 230.134V52.8805L128 0ZM88.4239 217.433L101.996 179.351H153.308L166.425 217.433H201.272L139.752 50.089H114.996L53.9458 217.433H88.4239ZM127.652 104.99L111.459 152.016H143.845L127.652 104.99Z"/>
 						</svg>
 					</div>
@@ -472,7 +502,7 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 	}
 
 	.animate-marquee {
-		animation: marquee 40s linear infinite;
+		animation: marquee 20s linear infinite;
 		width: fit-content;
 	}
 
@@ -529,7 +559,7 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 		border-right: 3px solid;
 		white-space: nowrap;
 		overflow: hidden;
-		animation: typing 1.5s steps(15, end) forwards, blink-caret .75s step-end infinite;
+		animation: typing 0.8s steps(15, end) forwards, blink-caret .75s step-end infinite;
 	}
 
 	.preloader-invert {
@@ -554,15 +584,15 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 				preloaderText.style.borderRight = 'none';
 				preloader.classList.add('preloader-invert');
 				preloaderText.classList.add('text-white');
-			}, 1800);
+			}, 900);
 			
 			setTimeout(() => {
 				preloader.classList.add('preloader-exit');
-			}, 2500);
+			}, 1400);
 			
 			setTimeout(() => {
 				preloader.remove();
-			}, 3500);
+			}, 2000);
 		}
 	});
 
@@ -735,29 +765,29 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 				const linkUrl = repo.isWeb && repo.homepage ? repo.homepage : (repo.html_url || "#");
 				const linkText = repo.isWeb ? "VISITAR (訪問)" : "GITHUB (ソース)";
 				const buttonClass = repo.isWeb 
-					? "bg-white text-black hover:bg-neutral-100 shadow-[4px_4px_0px_#000] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all" 
-					: "bg-black text-white hover:bg-neutral-800 shadow-[4px_4px_0px_rgba(0,0,0,0.5)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all";
+					? "bg-white dark:bg-neutral-900 text-black dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all" 
+					: "bg-black dark:bg-white text-white dark:text-black hover:bg-neutral-800 dark:hover:bg-neutral-100 shadow-[4px_4px_0px_rgba(0,0,0,0.5)] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.5)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all";
 				return `
-					<article class="bg-white border-2 border-black shadow-[4px_4px_0px_#000] flex flex-col h-full relative">
-						<div class="p-4 border-b-2 border-black flex justify-between items-start bg-neutral-50/50">
+					<article class="bg-white dark:bg-neutral-900 border-2 border-black dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] flex flex-col h-full relative">
+						<div class="p-4 border-b-2 border-black dark:border-white flex justify-between items-start bg-neutral-50/50 dark:bg-neutral-800/50">
 							<div>
-								<h3 class="font-bold text-lg text-black font-mono">${repo.name} <span class="text-xs text-neutral-500 font-normal hidden md:inline-block">/ ${repo.subtitle}</span></h3>
+								<h3 class="font-bold text-lg text-black dark:text-white font-mono break-words">${repo.name} <span class="text-xs text-neutral-500 dark:text-neutral-400 font-normal hidden md:inline-block">/ ${repo.subtitle}</span></h3>
 							</div>
 							<div class="flex flex-col items-end gap-2">
-								<span class="text-xs font-bold text-green-600 flex items-center gap-1 font-mono">
-									<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> EN LÍNEA [ 稼働中 ]
+								<span class="text-xs font-bold text-green-600 dark:text-green-400 flex items-center gap-1 font-mono">
+									<span class="w-2 h-2 rounded-full bg-green-500 dark:bg-green-400 animate-pulse"></span> EN LÍNEA [ 稼働中 ]
 								</span>
-								<span class="text-[10px] border border-black px-1 font-mono">[ ${labelType} ]</span>
+								<span class="text-[10px] border border-black dark:border-white px-1 font-mono text-black dark:text-white">[ ${labelType} ]</span>
 							</div>
 						</div>
 						<div class="p-4 flex-grow flex flex-col justify-between">
 							<div class="mb-4">
-								<div class="inline-block border border-neutral-300 text-neutral-500 text-[10px] px-2 py-1 mb-3 font-mono">
+								<div class="inline-block border border-neutral-300 dark:border-neutral-600 text-neutral-500 dark:text-neutral-400 text-[10px] px-2 py-1 mb-3 font-mono">
 									[ ${repo.badge} ]
 								</div>
-								<p class="text-sm text-neutral-700 font-mono">${repo.description}</p>
+								<p class="text-sm text-neutral-700 dark:text-neutral-300 font-mono break-words">${repo.description}</p>
 							</div>
-							<a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="block text-center border-2 border-black py-2 px-4 font-bold font-mono ${buttonClass}">
+							<a href="${linkUrl}" target="_blank" rel="noopener noreferrer" class="block text-center border-2 border-black dark:border-white py-2 px-4 font-bold font-mono ${buttonClass}">
 								${linkText}
 							</a>
 						</div>
@@ -781,6 +811,28 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 				slides[currentSlide].classList.remove('opacity-0', 'z-0');
 				slides[currentSlide].classList.add('opacity-100', 'z-10');
 			}, 3500); // Cambia cada 3.5 segundos
+		}
+	});
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const themeToggleBtn = document.getElementById('theme-toggle');
+		// Seleccionamos la etiqueta <html> que es donde Tailwind busca la clase
+		const htmlElement = document.documentElement;
+		
+		if (themeToggleBtn) {
+			themeToggleBtn.addEventListener('click', function() {
+				// Alternar la clase 'dark' en el HTML
+				htmlElement.classList.toggle('dark');
+				
+				// Comprobación por consola (F12)
+				const isDark = htmlElement.classList.contains('dark');
+				console.log("Sistema cambiado a modo:", isDark ? "OSCURO" : "CLARO");
+				
+				// Guardar preferencia
+				localStorage.setItem('theme', isDark ? 'dark' : 'light');
+			});
+		} else {
+			console.error("ERROR: No se encontró el botón con ID 'theme-toggle'");
 		}
 	});
 </script>

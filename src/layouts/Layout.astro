@@ -14,8 +14,25 @@ const { title, description = 'POISON-CL - Blue Team Specialist & Web Developer. 
 ---
 
 <!doctype html>
-<html lang="es" class="scroll-smooth">
+<html lang="es" class="scroll-smooth overflow-x-hidden">
 	<head>
+		<script is:inline>
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					return 'dark';
+				}
+				return 'light';
+			})();
+			
+			if (theme === 'dark') {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
+		</script>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,15 +44,17 @@ const { title, description = 'POISON-CL - Blue Team Specialist & Web Developer. 
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:url" content="https://mateogijon.dev" />
+		<meta property="og:url" content="https://mateo-dev-seven.vercel.app/" />
 		<meta property="og:site_name" content="Mateo Gijon - Desarrollo Web" />
+		<meta property="og:image" content="/fotos/og-image.png" />
 		
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="/fotos/og-image.png" />
 	</head>
-	<body class="bg-paper text-ink font-sans antialiased min-h-screen">
+	<body class="bg-white dark:bg-neutral-950 text-black dark:text-white font-sans antialiased min-h-screen transition-colors duration-300 overflow-x-hidden">
 		<slot />
 	</body>
 </html>
