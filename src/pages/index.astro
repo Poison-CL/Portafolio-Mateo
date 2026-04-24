@@ -235,6 +235,10 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 								<p class="font-sans text-base max-w-prose text-left dark:text-white">
 									Experiencia en el área de Informática de la Municipalidad de San Joaquín. <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">Soporte</span> y <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">gestión tecnológica</span>.
 								</p>
+								</p>
+								<p class="font-sans text-base max-w-prose text-left dark:text-white">
+									Experiencia en el área de Informática Monpla S.A. <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">Soporte</span> y <span class="bg-neutral-100 dark:bg-neutral-800 font-bold px-1">gestión tecnológica</span>.
+								</p>
 							</div>
 
 							<div class="mb-6">
@@ -674,21 +678,52 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 				name: "VENT", subtitle: "ベント", badge: "Eコマース : E-COMMERCE",
 				description: "VENT es una plataforma de comercio electrónico de alto rendimiento, diseñada para ofrecer una experiencia de usuario fluida y un control administrativo total. No es solo una tienda, es un sistema de gestión empresarial completo que integra logística, finanzas y marketing en una sola interfaz.",
 				homepage: "https://web-vent.vercel.app/", isWeb: true
+			},
+			{
+				name: "ALTF-4 Taller", subtitle: "アルトエフ4", badge: "サービス : SERVICE",
+				description: "ALT-F4 Taller es una plataforma de sistema de cupos creada con flask, donde los profesores del taller del CITT podran crear eventos para que sus alumnos registren cupos al tiempo real, con sistema de anuncios que se avisara via discord igualente la creacion de eventos.",
+				homepage: "https://altf-4-taller.vercel.app", isWeb: true
 			}
 		];
 
 		const username = "Poison-CL";
+		const githubFallbackProjects = [
+			{
+				name: "Portafolio-Mateo", subtitle: "リポジトリ", badge: "コード : CODE",
+				description: "Mi espacio personal desarrollado con Astro y Tailwind CSS.",
+				html_url: "https://github.com/Poison-CL/Portafolio-Mateo", homepage: "https://portafolio-mateo-seven.vercel.app",
+				isWeb: true
+			},
+			{
+				name: "TeVerse", subtitle: "リポジトリ", badge: "コード : CODE",
+				description: "Repositorio público de desarrollo y pruebas.",
+				html_url: "https://github.com/Poison-CL/TeVerse", homepage: "",
+				isWeb: false
+			},
+			{
+				name: "Sistema-de-gestion-de-empresa-de-gas", subtitle: "リポジトリ", badge: "コード : CODE",
+				description: "Sistema de gestión para empresa de gas.",
+				html_url: "https://github.com/Poison-CL/Sistema-de-gestion-de-empresa-de-gas", homepage: "",
+				isWeb: false
+			}
+		];
 
 		// 2. OBTENER REPOSITORIOS EXTRA DE GITHUB
-		fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=15`)
+		fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=30`, {
+			headers: {
+				"Accept": "application/vnd.github+json"
+			}
+		})
 			.then(response => {
 				if (!response.ok) throw new Error('Error en la API');
 				return response.json();
 			})
 			.then(repos => {
+				if (!Array.isArray(repos)) throw new Error('Formato inesperado de GitHub API');
 				// Filtramos forks y evitamos que los repos de código de las webs premium se dupliquen
 				const githubProjects = repos
 					.filter(repo => !repo.fork)
+					.filter(repo => !repo.archived)
 					.filter(repo => !['StrikeBowler', 'Ecommerce-Vent', 'NexSecure'].includes(repo.name))
 					.map(repo => ({
 						name: repo.name, subtitle: "リポジトリ", badge: "コード : CODE",
@@ -701,9 +736,9 @@ const techStack = ['Astro', 'Tailwind', 'Python', 'Kali Linux', 'Flask', 'Godot'
 				renderProjects([...premiumProjects, ...githubProjects]);
 			})
 			.catch(error => {
-				console.warn("API Error (GitHub). Cargando solo páginas web premium.");
-				// Fallback: Si GitHub falla, tus proyectos más importantes siguen ahí
-				renderProjects(premiumProjects);
+				console.warn("API Error (GitHub). Cargando fallback local de repositorios.");
+				// Fallback: si GitHub falla o limita requests, se muestran repos públicos base
+				renderProjects([...premiumProjects, ...githubFallbackProjects]);
 			});
 
 		// FUNCIÓN DE RENDERIZADO (Estética Japan Core)
